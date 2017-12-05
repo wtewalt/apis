@@ -4,7 +4,6 @@ Instructions followed here:
 https://www.themarketingtechnologist.co/getting-started-with-the-google-analytics-reporting-api-in-python/
 
 Contains the credentials needed to connect to the google analytics API.
-Connections to GA go through the SEM@johngroup.com login
  
 """
 
