@@ -1,0 +1,8 @@
+{
+    "client_id": "<client id>",
+    "client_secret": "<client secret>",
+    "redirect_uri": "<redirect uri>",
+    "access_code": "<access code>",
+    "access_token": "<access token>",
+    "refresh_token": "<refresh_token>"
+}
