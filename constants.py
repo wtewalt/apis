@@ -38,21 +38,11 @@ SESSIONS_DIMENSIONS = [
     {'name': 'ga:metro'}
 ]
 
-CSPIRE_SEGMENTS = [{"segmentId": "gaid::GvB1BxZNQDGKw3i3JTzBZw"},  # Business
-                   {"segmentId": "gaid::h7S_Jb8iS_aPbQjsbKnJzw"},  # Consumer
-                   {"segmentId": "gaid::-1"}  # All Users
-                  ]
-
-SALSARITAS_SEGMENTS= [{"segmentId": "gaid::-1"}] # All Users
+SEGMENTS = [{"segmentId": "gaid::-1"}]
 
 
 # View IDs
-CSPIRE_VIEW_ID= '84446473'
-SUNBELT_VIEW_ID= ''
-SALSARITAS_VIEW_ID = '129571710'
-TRUCKING_VIEW_ID= ''
-ERLANGER_VIEW_ID= ''
-
+VIEW_ID= ''
 
 """ Dates
 
