@@ -11,48 +11,66 @@ Metrics and Dimensions:
 """
 
 from functions import return_ga_data, clean_df_columns, format_all_dates
+import constants
 
-# get data
 
 
 # get sessions data.
 
-sessions_df = return_ga_data(
-    start_date='2017-11-30',
+
+#
+#
+#
+# CSpire
+#
+#
+#
+#
+"""
+cspire_sessions_df = return_ga_data(
+    START_DATE='2017-11-30',
     end_date='2017-11-30',
-    view_id='<view id>',
-    metrics=[{'expression': 'ga:sessions'}, 
-             {'expression': 'ga:users'}, 
-             #{'expression': 'ga:newUsers'},
-             #{'expression': 'ga:bounces'},
-             #{'expression': 'ga:goalCompletionsAll'},
-             #{'expression': 'ga:goal1Completions'},
-             #{'expression': 'ga:goal2Completions'},
-             #{'expression': 'ga:goal3Completions'},
-             #{'expression': 'ga:goal4Completions'},
-             #{'expression': 'ga:goal5Completions'}, 
-             ],
-    dimensions=[{'name': 'ga:sourceMedium'},
-                {'name': 'ga:segment'},
-                {'name': 'ga:date'}
-                #{'name': 'ga:keyword'},
-                #{'name': 'ga:campaign'},
-                #{'name': 'ga:referralPath'},
-                #{'name': 'ga:adContent'},
-                #{'name': 'ga:userType'},
-                #{'name': 'ga:deviceCategory'}
-                ],
-    segments=[{"segmentId": "<gaid>"}
-              ],
+    view_id=constants.CSPIRE_VIEW_ID,
+    metrics=constants.SESSIONS_METRICS,
+    dimensions=constants.SESSIONS_DIMENSIONS,
+    segments=constants.CSPIRE_SEGMENTS,
     split_dates=True,
     group_by=[]
 )
 
 # Rename columns
-sessions_df = clean_df_columns(sessions_df)
+cspire_sessions_df = clean_df_columns(cspire_sessions_df)
 
-if 'date' in sessions_df: 
-    sessions_df['date'] = format_all_dates(sessions_df.date)
+if 'date' in cspire_sessions_df: 
+    cspire_sessions_df['date'] = format_all_dates(cspire_sessions_df.date)
+"""
+#
+#
+#
+#
+# Salsaritas
+#
+#
+#
+#
+salsaritas_sessions_df = return_ga_data(
+    start_date=constants.START_DATE,
+    end_date=constants.END_DATE,
+    view_id=constants.SALSARITAS_VIEW_ID,
+    metrics=constants.SESSIONS_METRICS,
+    dimensions=constants.SESSIONS_DIMENSIONS,
+    segments=constants.SALSARITAS_SEGMENTS,
+    split_dates=True,
+    group_by=[]
+)
+
+# Rename columns
+salsaritas_sessions_df = clean_df_columns(salsaritas_sessions_df)
+
+if 'date' in salsaritas_sessions_df:
+    salsaritas_sessions_df['date'] = format_all_dates(salsaritas_sessions_df.date)
+
+
 
 
 
@@ -62,6 +80,34 @@ Check that all requested dimensions and metrics are returned.
 Print the df shape to get a sense of rows per day returned.
 """
 
-# print(sessions_df[:10]) # sessions_df[:4]
-# print(sessions_df.shape)
-# sessions_df.to_csv('c:/Users/wtewalt/Documents/ga_biweekly_data.csv')
+print(salsaritas_sessions_df[:10]) # cspire_sessions_df[:4]
+print(salsaritas_sessions_df.shape)
+#salsaritas_sessions_df.to_csv('W:/Clients/Salsarita\'s/Analytics - Salsa\'s/Weekly Reporting/Website Tracking/ga_salsaritas_pageviews.csv')
+
+
+
+""" Creating the Pages-level Query
+
+pages_df = return_ga_data(
+    START_DATE='2017-09-20',
+    end_date='2017-09-20',
+    view_id=  '84446473',
+    metrics=[{'expression': 'ga:sessions'},
+             {'expression': 'ga:users'},
+             {'expression': 'ga:newUsers'},
+             {'expression': 'ga:bounces'}, ],
+    dimensions=[{'name': 'ga:date'},
+                #{'name': 'ga:hostname'},
+                #{'name': 'ga:pagePath'},
+                {'name': 'ga:pageTitle'},
+                {'name': 'ga:landingPagePath'},
+                {'name': 'ga:exitPagePath'}],
+    split_dates=True,
+    group_by=[]
+)
+
+pages_df = clean_df_columns(pages_df)
+pages_df['date'] = format_all_dates(pages_df.date)
+print(pages_df[:4])
+print(pages_df.shape)
+"""
